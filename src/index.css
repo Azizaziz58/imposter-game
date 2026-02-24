@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-magenta: #ff00ff;
+  --neon-purple: #9d00ff;
+  --bg-deep: #05050a;
+  --bg-card: rgba(13, 13, 22, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-[#05050a] text-white overflow-x-hidden;
+    background: radial-gradient(circle at 50% 50%, #101025 0%, #05050a 100%);
+  }
+}
+
+/* Custom Cyber UI Components */
+.cyber-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.neon-border-cyan {
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+}
+
+.neon-border-purple {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.neon-text-cyan {
+  color: #22d3ee;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.5));
+}
+
+.neon-text-magenta {
+  color: #f472b6;
+  filter: drop-shadow(0 0 10px rgba(244, 114, 182, 0.5));
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  transition: all 0.3s;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-cyber {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.btn-cyber:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cyber:active {
+  transform: scale(0.95);
+}
+
+.btn-cyber-primary {
+  background: linear-gradient(to right, #0891b2, #2563eb);
+  color: white;
+  box-shadow: 0 0 20px rgba(8, 145, 178, 0.4);
+}
+
+.btn-cyber-primary:hover {
+  background: linear-gradient(to right, #06b6d2, #3b82f6);
+}
+
+.btn-cyber-secondary {
+  background: linear-gradient(to right, #9333ea, #db2777);
+  color: white;
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+}
+
+.btn-cyber-secondary:hover {
+  background: linear-gradient(to right, #a855f7, #ec4899);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Nebula Background Animation */
+.nebula-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.6;
+}
+
+.nebula-bg::before,
+.nebula-bg::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(0, 243, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(157, 0, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.05) 0%, transparent 50%);
+  animation: nebula-rotate 60s linear infinite;
+}
+
+.nebula-bg::after {
+  animation: nebula-rotate 40s linear infinite reverse;
+  opacity: 0.5;
+}
+
+@keyframes nebula-rotate {
+  from {
+    transform: rotate(0deg) scale(1.0);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+.glitch-text {
+  animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+
+  2% {
+    transform: translate(-2px, 2px);
+    text-shadow: 2px 0 var(--neon-cyan), -2px 0 var(--neon-magenta);
+  }
+
+  4% {
+    transform: translate(2px, -2px);
+    text-shadow: -2px 0 var(--neon-cyan), 2px 0 var(--neon-magenta);
+  }
+
+  6% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
